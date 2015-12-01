@@ -2,7 +2,7 @@ var window = require("global/window")
 var test = require("tape")
 var forEach = require("for-each")
 
-var xhr = require("../index.js")
+var xhr = require("../xhr-browserify.js")
 
 test("constructs and calls callback without throwing", function(assert) {
     xhr({}, function(err, resp, body) {

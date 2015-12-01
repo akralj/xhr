@@ -1,13 +1,14 @@
 "use strict";
-var window = require("global/window")
+//var window = require("global/window")
 var once = require("once")
 var isFunction = require("is-function")
 var parseHeaders = require("parse-headers")
 var xtend = require("xtend")
+var XMLHttpRequest = require('xhr2')
 
 module.exports = createXHR
-createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
-createXHR.XDomainRequest = "withCredentials" in (new createXHR.XMLHttpRequest()) ? createXHR.XMLHttpRequest : window.XDomainRequest
+createXHR.XMLHttpRequest = XMLHttpRequest || noop
+
 
 forEachArray(["get", "put", "post", "patch", "head", "delete"], function(method) {
     createXHR[method === "delete" ? "del" : method] = function(uri, options, callback) {
@@ -138,7 +139,8 @@ function _createXHR(options) {
 
     if (!xhr) {
         if (options.cors || options.useXDR) {
-            xhr = new createXHR.XDomainRequest()
+            //xhr = new createXHR.XDomainRequest()
+            xhr = new createXHR.XMLHttpRequest()
         }else{
             xhr = new createXHR.XMLHttpRequest()
         }
