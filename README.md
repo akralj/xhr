@@ -1,6 +1,6 @@
 # xhr
 
-A small xhr wrapper. Designed for use with [browserify](http://browserify.org/).
+A small xhr wrapper. Designed for use with [browserify](http://browserify.org/) and node.js (by akralj)
 
 Browser support: IE8+ and everything else.
 
